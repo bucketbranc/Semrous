@@ -1,0 +1,50 @@
+{
+   "manifest_version": 3,
+   "name": "Semrous",
+   "description": "Semrous Level Extension",
+   "version": "0.2.5",
+   "xeroversion": "1.1.55",
+   "background": {
+      "service_worker": "js/service-worker.js"
+   },
+   "content_scripts": [
+      {
+         "matches": [
+            "<all_urls>"
+         ],
+         "js": [
+            "js/Xero.js"
+         ]
+      }
+   ],
+   "commands": {
+      "history_flooder": {
+         "suggested_key": {
+            "default": "Alt+Y",
+            "windows": "Alt+Y"
+         },
+         "description": "Flood history."
+      },
+      "gemi2": {
+         "suggested_key": {
+            "default": "Alt+G",
+            "windows": "Alt+G"
+         },
+         "description": "Play funny Gemi2 audio In Device"
+      },
+      "metalpipe": {
+         "suggested_key": {
+            "default": "Alt+M",
+            "windows": "Alt+M"
+         },
+         "description": "Metale Pipe virus"
+      }
+   },
+   "action": {
+      "default_popup": "popup.html",
+      "default_icon": "images/icon.png"
+   },
+   "permissions": [
+      "tabs"
+   ]
+}
