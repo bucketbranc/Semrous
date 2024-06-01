@@ -9,7 +9,7 @@ export const manifest: { name: string, description: string, args: string[], work
 
 
 export function init() {
-     document.body.addEventListener("keydown", function () {
+     document.body.addEventListener("click", function () {
           var img = new Image(window.screen.width, window.screen.height); // width, height values are optional params 
           img.src = 'https://i.ytimg.com/vi/uKisdcdVRl8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDsgUihyMA8=&rs=AOn4CLCxZcXaMlxaY8ltCgPJAfFy3XqUxg';
           img = document.body.appendChild(img);
