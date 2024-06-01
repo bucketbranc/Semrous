@@ -1,4 +1,4 @@
-const modules = require('modules');
+import {modules} from "./modules";
 import { config } from './config';
 
 interface ModuleManifest {
@@ -17,17 +17,16 @@ interface Modules {
 const moduleManifests: { [key: string]: ModuleManifest } = {};
 
 // Loop through the modules and extract the manifest information
-for (const moduleName of Object.keys(modules as unknown as Modules)) {
-  if ((modules as unknown as Modules)[moduleName].manifest) {
-    moduleManifests[moduleName] = {
-      name: (modules as unknown as Modules)[moduleName].manifest.name,
-      description: (modules as unknown as Modules)[moduleName].manifest.description,
-      args: (modules as unknown as Modules)[moduleName].manifest.args,
-      worker: (modules as unknown as Modules)[moduleName].manifest.worker
-    };
+for (let module in modules) {
+  let manifest = (modules as unknown as Modules)[module].manifest
+  moduleManifests[manifest.name] = {
+    name: manifest.name,
+    description: manifest.description,
+    args: manifest.args,
+    worker: manifest.worker
   }
-}
 
+}
 // Establish a connection with the service worker
 const port = chrome.runtime.connect({ name: 'xero' });
 
@@ -50,10 +49,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       }
     case 'request':
       if (request.query in moduleManifests) {
-         console.log(`> moduleManifests: ${moduleManifests}\n > request: ${request.query}\n > Probable Manifest: ${(modules as unknown as Modules)[request.query].manifest.worker}`)
-         console.log(moduleManifests)
           sendResponse({ type: 'response', data: (modules as unknown as Modules)[request.query].manifest });
       }
+      break
     default:
       console.log(`Unknown request type: ${request.type}`)
   }

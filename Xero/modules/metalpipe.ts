@@ -1,14 +1,10 @@
 /* Metalpipe Virus by SYCTXA */
 import * as css from 'csstype';
-export class manifest {
-    public name: string = 'metalpipe';
-    public description: string = 'Execute a funny virus!';
-    public args: Array<string> = ['']
-    public worker: { tabQuery: { active: boolean, currentWindow: boolean }, tabs: number } = { tabQuery: { active: true, currentWindow: true }, tabs: 0 };
-    
-    constructor() {
-        // Initialization logic goes here
-    }
+export const manifest: {name:string, description: string, args: string[], worker:{ tabQuery: { active?: boolean, currentWindow?: boolean }, tabs: number }} = {
+     name: 'metalpipe',
+     description:'Execute a funny virus!',
+     args: [''],
+     worker: { tabQuery: { active: true, currentWindow: true }, tabs: 0 }
 
 }
 

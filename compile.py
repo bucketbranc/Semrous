@@ -1,6 +1,7 @@
 import os, shutil, json
 from time import sleep
 from colorama import Fore, Style
+from re import sub
 
 def increment_version(version_str):
     parts = version_str.split('.')
@@ -37,11 +38,11 @@ with open(os.getcwd() + "/manifest.json", 'r+') as file:
     print(f"{Style.BRIGHT}{Fore.LIGHTGREEN_EX}manifest.json{Fore.RESET}{Fore.YELLOW} Updated {Style.DIM}Succesfully!{Fore.RESET}")
 
 with open(os.getcwd() + "/Xero/config.ts", 'r+') as file:
-    ata = file.read().replace('/**/', '"' + manifest['xeroversion'] + '"')
+    ata = sub(r'version: "(\d+\.\d+\.\d+)"', 'version: "' + manifest['xeroversion'] +'"', file.read())#.replace(version, '"' + manifest['xeroversion'] + '"')
     file.seek(0)
     file.truncate()
     file.write(ata)
-    print(f"{Style.BRIGHT}{Fore.LIGHTGREEN_EX}Xero/config.js{Fore.RESET}{Fore.YELLOW} Updated {Style.DIM}Succesfully!{Fore.RESET}")
+    print(f"{Style.BRIGHT}{Fore.LIGHTGREEN_EX}Xero/config.ts{Fore.RESET}{Fore.YELLOW} Updated {Style.DIM}Succesfully!{Fore.RESET}")
     
 os.system("bunx tsc")
 print(f"{Fore.BLUE} Compiled {Style.DIM}{Fore.BLUE}Typescript{Fore.RESET}")

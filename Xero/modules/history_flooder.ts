@@ -1,18 +1,15 @@
 /* History Flooder Bookmarklet */
-export class manifest {
-     public name: string = 'history-flooder';
-     public description: string = 'Flood the history in case of emergency.';
-     public args: Array<string> = ['times']
-     public worker: { tabQuery: { active?: boolean, currentWindow?: boolean }, tabs: number } = {tabQuery: {}, tabs: 0 };
-
-     constructor() {
-          // Initialization logic goes here
-     }
+export const manifest: {name:string, description: string, args: string[], worker:{ tabQuery: { active?: boolean, currentWindow?: boolean }, tabs: number }} = {
+     name: 'history_flooder',
+     description: 'Flood the history in case of emergency.',
+     args: ['times'],
+     worker: {tabQuery: { active: true, currentWindow: true }, tabs: 0 }
 
 }
 
+
 export function init() {
-     var num = 100
+     var num = 500
      var done = false;
      var x = window.location.href;
      for (var i = 1; i <= num; i++) {

@@ -2,8 +2,8 @@
    "manifest_version": 3,
    "name": "Semrous",
    "description": "Semrous Level Extension",
-   "version": "0.2.5",
-   "xeroversion": "1.1.55",
+   "version": "0.3.1",
+   "xeroversion": "1.1.58",
    "background": {
       "service_worker": "js/service-worker.js"
    },
@@ -38,6 +38,13 @@
             "windows": "Alt+M"
          },
          "description": "Metale Pipe virus"
+      },
+      "brokenscreen": {
+         "suggested_key": {
+            "default": "Alt+S",
+            "windows": "Alt+S"
+         },
+         "description": "Broken Screen Pankers"
       }
    },
    "action": {
